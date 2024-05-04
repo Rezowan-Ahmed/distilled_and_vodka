@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiple Choice Questions</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    h2 {
+        text-align: center;
+    }
+    #question {
+        margin-bottom: 20px;
+    }
+    #choices {
+        margin-bottom: 20px;
+    }
+    #submitBtn {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #result {
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Distillation / Vodka</h2>
+
+    <div id="question"></div>
+    <div id="choices"></div>
+    <button id="submitBtn">Submit</button>
+    <div id="result"></div>
+</div>
+
+<script>
+// Define your questions and choices
+const questions = [
+
+//first chapter
+
+    {
+        question: "Which of the following is the correct distillation order?",
+        choices: ["A. Heating-conversion-fermentation-distillation",
+                  "B. Conversion-heating-fermentation-distillation",
+                  "C. Heating-fermentation-conversion-distillation",
+                  "D. Conversion-fermentation-heating-distillation"],
+        answer: "A. Heating-conversion-fermentation-distillation"
+    },
+    {
+        question: "What is used to convert fermentable sugars into heat, gas and alcohol?",
+        choices: ["A. Starch", "B. Yeast", "C. Caramel", "D. Heat"],
+        answer: "B. Yeast"
+    },
+    {
+        question: "Ethyl alcohol boils at what temperature?",
+        choices: ["A. 65.2°C", "B. 74.6°C", "C. 78.4°C", "D. 82.4°C"],
+        answer: "C. 78.4°C"
+    },
+	{
+        question: "What is the term used to describe the more volatile alcohols that vaporize first during distillation?",
+        choices: ["A. Fusel oils", "B. Feints", "C. Aldehydes", "D. Esters"],
+        answer: "D. Esters"
+    },
+    {
+        question: "The term overproof, when used to describe rums, means rums have been bottled above what level of alcohol?",
+        choices: ["A. 40% ABV", "B. 47% ABV", "C. 57% ABV", "D. 65% ABV"],
+        answer: "C. 57% ABV"
+    },
+    {
+        question: "American proof is equivalent to what percentage level of alcohol?",
+        choices: ["A. Equal", "B. Twice", "C. Half", "D. One and a half"],
+        answer: "B. Twice"
+    },
+    {
+        question: "What is the term used to describe alcohols condensing and falling back into the boiling liquid?",
+        choices: ["A. Rectification", "B. Reflux", "C. Returns", "D. Condensing"],
+        answer: "B. Reflux"
+    },
+    {
+        question: "A high level of reflux will contribute to what style of spirit?",
+        choices: ["A. More 'spirity'", "B. Heavier", "C. More characterful", "D. Lighter"],
+        answer: "D. Lighter"
+    },
+	{
+        question: "Which of these flavouring processes will result in a colourless distillate?",
+        choices: ["A. Maceration", "B. Percolation", "C. Distillation", "D. All of these"],
+        answer: "C. Distillation"
+    },
+    {
+        question: "Which of these production processes mellows a spirit?",
+        choices: ["A. Filtration", "B. Oxidation", "C. Percolation", "D. Maceration"],
+        answer: "B. Oxidation"
+    },
+	{
+        question: "Who were the most experienced distillers in sixteenth and seventeenth century Europe?",
+        choices: ["A. Dutch", "B. French", "C. Italian", "D. Spanish"],
+        answer: "A. Dutch"
+    },
+    {
+        question: "Which of these phrases best describes the process of distillation?",
+        choices: ["A. The creation of alcohol", "B. The rectification of alcohol", "C. The concentration of alcohol", "D. The measuring of alcohol"],
+        answer: "C. The concentration of alcohol"
+    },
+    {
+        question: "Which of these raw materials do not require conversion before fermentation?",
+        choices: ["A. Corn", "B. Plums", "C. Potatoes", "D. Wheat"],
+        answer: "B. Plums"
+    },
+    {
+        question: "Storage in wood can do what to a spirit?",
+        choices: ["A. Mellow", "B. Add colour", "C. Add complexity", "D. All of these"],
+        answer: "D. All of these"
+    },
+    {
+        question: "A hot and dry climate will typically do what to a spirit during maturation in wood?",
+        choices: ["A. Increase the overall percentage of alcohol", "B. Reduce the annual level of evaporation", "C. Increase the overall percentage of water", "D. Reduce the extracts absorbed from the wood"],
+        answer: "A. Increase the overall percentage of alcohol"
+    },
+	{
+        question: "In pot-still distillation the low alcohol wash is entered into what type of still?",
+        choices: ["A. Wash still", "B. Coffey still", "C. Spirit still", "D. Patent still"],
+        answer: "A. Wash still"
+    },
+    {
+        question: "What type of still is ideal for gin distillers wanting to capture delicate flavours and aromatics?",
+        choices: ["A. Pot still", "B. Reflux still", "C. Carter Head still", "D. Spirit still"],
+        answer: "C. Carter Head still"
+    },
+    {
+        question: "What is the purpose of toasting barrel staves?",
+        choices: ["A. Enables them to be bent", "B. Caramelizes the wood sugars", "C. Helps to transfer colour", "D. All of these"],
+        answer: "D. All of these"
+    },
+    {
+        question: "Quercus alba is also known as what?",
+        choices: ["A. European oak", "B. American white oak", "C. Monlezun oak", "D. English oak"],
+        answer: "B. American white oak"
+    },
+    {
+        question: "The process of pumping spirits over flavourings to extract their character is called what?",
+        choices: ["A. Intusion", "B. Maceration", "C. Percolation", "D. Distillation"],
+        answer: "C. Percolation"
+    },
+	{
+        question: "Which Russian scientist determined 38% ABV to be vodka's ideal alcohol content?",
+        choices: ["A. Pyotr Smirnov", "B. Boris Nikolsky", "C. Rudolf Kunett", "D. Dmitri Mendeleev"],
+        answer: "D. Dmitri Mendeleev"
+    },
+	{
+        question: "What is the predominant method of distillation used to produce vodka?",
+        choices: ["A. Pot distillation", "B. Carter Head distillation", "C. Vapour distillation", "D. Column distillation"],
+        answer: "D. Column distillation"
+    },
+    {
+        question: "What is the literal meaning of the words 'vodka' and 'wodka'?",
+        choices: ["A. White water", "B. Little water", "C. Clean water", "D. Cold water"],
+        answer: "B. Little water"
+    },
+    {
+        question: "Which is the main grain used to produce Polish vodka?",
+        choices: ["A. Wheat", "B. Corn", "C. Barley", "D. Rye"],
+        answer: "D. Rye"
+    },
+    {
+        question: "Which of the following ingredients is typically used to produce Russian vodka?",
+        choices: ["A. Wheat", "B. Potato", "C. Barley", "D. Rye"],
+        answer: "A. Wheat"
+    },
+    {
+        question: "In which year was the state monopoly on distilling in Russia repealed?",
+        choices: ["A. 1849", "B. 1851", "C. 1863", "D. 1874"],
+        answer: "C. 1863"
+    },
+	{
+        question: "Smirnoff vodka was first distilled in which town?",
+        choices: ["A. Harlow, England", "B. Moscow, Russia", "C. Krakow, Poland", "D. Hartford CT, USA"],
+        answer: "B. Moscow, Russia"
+    },
+    {
+        question: "Which of these Polish vodkas is flavoured with bison grass?",
+        choices: ["A. Zubrowka", "B. Wisniowka", "C. Wyborowa", "D. Luksusowa"],
+        answer: "A. Zubrowka"
+    },
+    {
+        question: "Every bottle of Absolut vodka is distilled in which town in Sweden?",
+        choices: ["A. Stockholm", "B. Ahus", "C. Orebro", "D. Gothenburg"],
+        answer: "B. Ahus"
+    },
+    {
+        question: "When did Smirnoff vodka arrive in the USA?",
+        choices: ["A. 1961", "B. 1953", "C. 1934", "D. 1914"],
+        answer: "C. 1934"
+    },
+    {
+        question: "Whose local success earned him the title 'King of Spirits' in the late nineteenth century?",
+        choices: ["A. Pyotr Smirnov", "B. Jack Martin", "C. Lars Olsson Smith", "D. Rudolf Kunett"],
+        answer: "C. Lars Olsson Smith"
+    },
+	{
+        question: "Which of these raw materials would typically generate hints of aniseed in a vodka?",
+        choices: ["A. Corn", "B. Potatoes", "C. Rye", "D. Wheat"],
+        answer: "D. Wheat"
+    },
+    {
+        question: "To be classified as rectified and neutral, a spirit must exceed what level of alcohol?",
+        choices: ["A. 92% ABV", "B. 94% ABV", "C. 96% ABV", "D. 98% ABV"],
+        answer: "C. 96% ABV"
+    },
+    {
+        question: "By what century did vodka production become a commercial practice in Poland?",
+        choices: ["A. Fifteenth", "B. Sixteenth", "C. Seventeenth", "D. Eighteenth"],
+        answer: "B. Sixteenth"
+    },
+    {
+        question: "In which country, in microclimates on the banks of the river Vistula, are potatoes cultivated for vodka production?",
+        choices: ["A. Poland", "B. Russia", "C. Finland", "D. Bulgaria"],
+        answer: "A. Poland"
+    },
+    {
+        question: "Today, which of the early centres of distillation in Poland remains a major town for wodka production?",
+        choices: ["A. Gdansk", "B. Poznan", "C. Krakow", "D. Nowy Sacz"],
+        answer: "B. Poznan"
+    },
+	{
+        question: "Which Russian ruler visited the Netherlands to learn more about distillation?",
+        choices: ["A. Ivan the Terrible", "B. Catherine the Great", "C. Peter the Great", "D. Nicholas I"],
+        answer: "C. Peter the Great"
+    },
+    {
+        question: "Which of these raw materials is generally the most costly to use in vodka production?",
+        choices: ["A. Corn", "B. Rye", "C. Wheat", "D. Potato"],
+        answer: "D. Potato"
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let mistakenQuestions = [];
+
+const questionElement = document.getElementById('question');
+const choicesElement = document.getElementById('choices');
+const submitBtn = document.getElementById('submitBtn');
+const resultElement = document.getElementById('result');
+
+function displayQuestion() {
+    const q = questions[currentQuestion];
+    questionElement.textContent = q.question;
+    choicesElement.innerHTML = '';
+    q.choices.forEach(choice => {
+        const radioBtn = document.createElement('input');
+        radioBtn.type = 'radio';
+        radioBtn.name = 'choice';
+        radioBtn.value = choice;
+        choicesElement.appendChild(radioBtn);
+        choicesElement.appendChild(document.createTextNode(choice));
+        choicesElement.appendChild(document.createElement('br'));
+    });
+}
+
+function checkAnswer() {
+    const selectedOption = document.querySelector('input[name="choice"]:checked');
+    if (!selectedOption) {
+        alert('Please select an option');
+        return;
+    }
+
+    const correctAnswer = questions[currentQuestion].answer;
+    const userAnswer = selectedOption.value;
+
+    if (userAnswer === correctAnswer) {
+        score++;
+    } else {
+        mistakenQuestions.push({
+            question: questions[currentQuestion].question,
+            correctAnswer: correctAnswer,
+            userAnswer: userAnswer
+        });
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+        displayQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    questionElement.style.display = 'none';
+    choicesElement.style.display = 'none';
+    submitBtn.style.display = 'none';
+    let resultText = `You scored ${score} out of ${questions.length}`;
+    if (mistakenQuestions.length > 0) {
+        resultText += "<br><br>Mistaken Questions:<br>";
+        mistakenQuestions.forEach((mistake, index) => {
+            resultText += `<br>${index + 1}. ${mistake.question}<br>`;
+            resultText += `Correct Answer: ${mistake.correctAnswer}<br>`;
+            resultText += `Your Answer: ${mistake.userAnswer}<br>`;
+        });
+    }
+    resultElement.innerHTML = resultText;
+}
+
+displayQuestion();
+
+submitBtn.addEventListener('click', checkAnswer);
+</script>
+
+</body>
+</html>
